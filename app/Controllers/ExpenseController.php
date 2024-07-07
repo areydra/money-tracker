@@ -3,13 +3,13 @@ namespace App\Controllers;
 use App\Models\ExpenseModel;
 use CodeIgniter\Controller;
 
-class UserCrud extends Controller
+class ExpenseController extends BaseController
 {
     // show users list
     public function index(){
-        $userModel = new UserModel();
-        $data['expenses'] = $userModel->orderBy('id', 'DESC')->findAll();
-        return view('dashboard_view', $data);
+        $expenseModel = new ExpenseModel();
+        $data['expenses'] = $expenseModel->orderBy('id', 'DESC')->findAll();
+        return view('dashboard', $data);
     }
 
     // add user form
@@ -32,7 +32,7 @@ class UserCrud extends Controller
     // show single user
     public function singleExpense($id = null){
         $expenseModel = new ExpenseModel();
-        $data['expense_obj'] = $expenseModel->where('id', $id)->first();
+        $data['expense'] = $expenseModel->where('id', $id)->first();
         return view('edit_expense', $data);
     }
 
