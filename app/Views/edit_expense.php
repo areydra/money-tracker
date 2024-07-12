@@ -25,7 +25,7 @@
 <body>
   <div class="container mt-5">
     <form method="post" id="edit_expense" name="edit_expense" 
-    action="<?= site_url('/expense/edit/submit') ?>">
+    action="<?= base_url('/expense/edit/submit') ?>">
       <input type="hidden" name="id" id="id" value="<?php echo $expense['id']; ?>">
 
       <div class="form-group">

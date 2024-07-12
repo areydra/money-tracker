@@ -3,15 +3,16 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Money Tracker</title>
+  <title>Money Tracker - Dashboard</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-4">
     <div class="d-flex justify-content-end">
-        <a href="<?php echo site_url('/expense/form') ?>" class="btn btn-success mb-2">Add Expense</a>
-	</div>
+        <a href="<?php echo base_url('/expense/form') ?>" class="btn btn-success mb-2 mr-2">Add Expense</a>
+        <a href="<?php echo base_url('/logout/submit') ?>" class="btn btn-danger mb-2">Logout</a>
+    </div>
     <?php
      if(isset($_SESSION['msg'])){
         echo $_SESSION['msg'];

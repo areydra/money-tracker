@@ -1,15 +1,22 @@
 <?php 
 namespace App\Controllers;
 use App\Models\ExpenseModel;
+use App\Models\AuthModel;
 use CodeIgniter\Controller;
 
 class ExpenseController extends BaseController
 {
     // show users list
     public function index(){
-        $expenseModel = new ExpenseModel();
-        $data['expenses'] = $expenseModel->orderBy('id', 'DESC')->findAll();
-        return view('dashboard', $data);
+        $authModel = new AuthModel();
+
+        if (!$authModel->current_user()) {
+            return redirect()->to(base_url('/login'));
+        } else {
+            $expenseModel = new ExpenseModel();
+            $data['expenses'] = $expenseModel->orderBy('id', 'DESC')->findAll();
+            return view('dashboard', $data);
+        }
     }
 
     // add user form
@@ -26,7 +33,7 @@ class ExpenseController extends BaseController
             'date'  => $this->request->getVar('date'),
         ];
         $expenseModel->insert($data);
-        return $this->response->redirect(site_url('/dashboard'));
+        return $this->response->redirect(base_url('/dashboard'));
     }
 
     // show single user
@@ -46,13 +53,13 @@ class ExpenseController extends BaseController
             'date'  => $this->request->getVar('date'),
         ];
         $expenseModel->update($id, $data);
-        return $this->response->redirect(site_url('/dashboard'));
+        return $this->response->redirect(base_url('/dashboard'));
     }
  
     // delete user
     public function delete($id = null){
         $expenseModel = new ExpenseModel();
         $data['expense'] = $expenseModel->where('id', $id)->delete($id);
-        return $this->response->redirect(site_url('/dashboard'));
+        return $this->response->redirect(base_url('/dashboard'));
     }    
 }

@@ -65,7 +65,9 @@ class Autoload extends AutoloadConfig
      *
      * @var array<string, string>
      */
-    public $classmap = [];
+    public $classmap = [
+        'CodeIgniter\\Database\\Session\\Session' => SYSTEMPATH . 'Database/Session/Session.php',
+    ];
 
     /**
      * -------------------------------------------------------------------

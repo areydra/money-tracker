@@ -21,7 +21,7 @@
 <body>
   <div class="container mt-5">
     <form method="post" id="add_create" name="add_create" 
-    action="<?= site_url('/expense/submit') ?>">
+    action="<?= base_url('/expense/submit') ?>">
       <div class="form-group">
         <label>Date</label>
         <input type="date" name="date" class="form-control">
