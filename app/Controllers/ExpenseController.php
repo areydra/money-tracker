@@ -2,7 +2,6 @@
 namespace App\Controllers;
 use App\Models\ExpenseModel;
 use App\Models\AuthModel;
-use CodeIgniter\Controller;
 
 class ExpenseController extends BaseController
 {

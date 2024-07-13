@@ -1,17 +1,9 @@
 <?php
 namespace App\Controllers;
 use App\Models\AuthModel;
-use CodeIgniter\Controller;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
-    protected $session;
-
-    public function __construct()
-    {
-        $this->session = \Config\Services::session();
-    }
-
 	public function index()
 	{
         $authModel = new AuthModel();
